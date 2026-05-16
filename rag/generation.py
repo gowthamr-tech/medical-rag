@@ -2,12 +2,13 @@ import ollama
 
 class Generation:
     def callOpensourceModel(context,question):
+         print("Calling Open Source Model",context,question)
          response=ollama.chat(
               model="mistral",
               messages=[
                    {
                         "role": "system",
-                        "content": f"Use this context to answer don't answer on your knowledge:\n{context}"
+                        "content": f"You are strict assistant.ANswer ONLY using context below.If the answer is not in context say don't know:\n{context}"
                    },
                    {
                         "role": "user",
@@ -15,5 +16,4 @@ class Generation:
                    }
               ]
          )
-         print(response.message.content)
-    callOpensourceModel("The capital of France is india.","What is the capital of France?")
+         return response.message.content
