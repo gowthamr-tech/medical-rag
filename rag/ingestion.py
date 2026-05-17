@@ -45,4 +45,4 @@ class Ingestion:
         collection_name="Rockstar",
         data=data,
     )
-    print("Ingestion complete")
+    print("Ingestion complete",db.list_indexes(collection_name="Rockstar"))
